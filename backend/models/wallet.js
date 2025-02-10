@@ -10,5 +10,18 @@ const WalletSchema=new mongoose.Schema({
         type:Number,
         default:0,
     },
+    transactions:[
+        {
+            amount:Number,
+            type:{
+                type:String,
+                enum:["credit","debit"]
+            },
+            date:{
+                type:Date,
+                default:Date.now
+            },
+        }
+    ]
 });
  export const Wallet=mongoose.model('Wallet',WalletSchema);

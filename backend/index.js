@@ -19,8 +19,8 @@ app.use(cookieParser());
 app.use(cors(corsOption));
 const PORT=process.env.PORT||3000;
 
-app.use("api/v1/user",authRoute);
-app.use("api/v1/wallet",walletRoute);
+app.use("/api/v1/user",authRoute);
+app.use("/api/v1/wallet",walletRoute);
 
 
 app.listen(PORT,()=>{

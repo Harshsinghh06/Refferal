@@ -4,5 +4,5 @@ import { authMiddleware } from "../middleware/authMiddleware.js";
  const router=express.Router();
  router.get("/balance",authMiddleware,getWalletBalance);
  router.post("/withdraw",authMiddleware,withdraw);
- router.post("credit",authMiddleware,creditReferrerWallet);
+ router.post("/credit",authMiddleware,creditReferrerWallet);
  export default router;

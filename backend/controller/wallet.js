@@ -9,7 +9,7 @@ export const getWalletBalance = async (req, res) => {
       }
   
       res.json({ balance: wallet.balance });
-    } catch (err) {
+    } catch (error) {
       res.status(500).json({ message: 'Server error' });
     }
   };
@@ -45,8 +45,11 @@ export const getWalletBalance = async (req, res) => {
       }
       const wallet = await Wallet.findOneAndUpdate(
         { user: referrer._id },
-        { $inc: { balance: amount } },
-        { upsert: true, new: true }
+        {
+          $inc:{balance:amount},
+          $push:{transactions:{amount,type:"credit"}}
+        },
+        {upsert:true,new:true}
       );
   
       res.json({ message: 'Wallet credited successfully', balance: wallet.balance });

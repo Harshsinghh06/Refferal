@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import authRoute from "./routes/authRoute.js";
 import walletRoute from "./routes/wallet.js"
 import connectDB from "./util/db.js";
+import leaderRoute from './routes/leaderBoard.js';
 
 
 dotenv.config({});
@@ -21,6 +22,8 @@ const PORT=process.env.PORT||3000;
 
 app.use("/api/v1/user",authRoute);
 app.use("/api/v1/wallet",walletRoute);
+app.use("/api/v1/leader",leaderRoute);
+
 
 
 app.listen(PORT,()=>{
